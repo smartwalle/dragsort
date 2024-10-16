@@ -1,8 +1,8 @@
-package dragsort
+package sortable
 
 import "math"
 
-func Sort(dataSource DataSource, source Sortable, target Sortable) error {
+func Sort(dataSource DataSource, source Element, target Element) error {
 	if dataSource == nil || source == nil || target == nil {
 		return nil
 	}

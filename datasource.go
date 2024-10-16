@@ -1,7 +1,7 @@
-package dragsort
+package sortable
 
 type DataSource interface {
-	GetSortableList(minSortIndex, maxSortIndex int) ([]Sortable, error)
+	GetSortableList(minSortIndex, maxSortIndex int) ([]Element, error)
 
-	UpateSortableList(elements []Sortable) error
+	UpateSortableList(elements []Element) error
 }

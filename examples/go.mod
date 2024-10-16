@@ -1,11 +1,7 @@
-module github.com/smartwalle/dragsort/examples
+module github.com/smartwalle/sortable/examples
 
 go 1.18
 
-require (
- github.com/smartwalle/dragsort v0.0.0
-)
+require github.com/smartwalle/sortable v0.0.0
 
-replace (
-	github.com/smartwalle/dragsort => ../
-)
+replace github.com/smartwalle/sortable => ../

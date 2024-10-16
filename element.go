@@ -1,6 +1,6 @@
-package dragsort
+package sortable
 
-type Sortable interface {
+type Element interface {
 	GetUniqueID() int64
 
 	GetSortIndex() int
