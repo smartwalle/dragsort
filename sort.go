@@ -1,7 +1,5 @@
 package sortable
 
-import "math"
-
 func Sort(dataSource DataSource, source Element, target Element) error {
 	if dataSource == nil || source == nil || target == nil {
 		return nil
@@ -13,9 +11,17 @@ func Sort(dataSource DataSource, source Element, target Element) error {
 	var sourceSortIndex = source.GetSortIndex()
 	var targetSortIndex = target.GetSortIndex()
 
+	var minSortIndex int
+	var maxSortIndex int
+	if sourceSortIndex > targetSortIndex {
+		minSortIndex = targetSortIndex
+		maxSortIndex = sourceSortIndex
+	} else {
+		minSortIndex = sourceSortIndex
+		maxSortIndex = targetSortIndex
+	}
+
 	// 取出 source、target 及两者之间的所有数据
-	var minSortIndex = int(math.Min(float64(sourceSortIndex), float64(targetSortIndex)))
-	var maxSortIndex = int(math.Max(float64(sourceSortIndex), float64(targetSortIndex)))
 	elements, err := dataSource.GetSortableList(minSortIndex, maxSortIndex)
 	if err != nil {
 		return err
@@ -36,8 +42,7 @@ func Sort(dataSource DataSource, source Element, target Element) error {
 		}
 	}
 
-	err = dataSource.UpateSortableList(elements)
-	if err != nil {
+	if err = dataSource.UpateSortableList(elements); err != nil {
 		return err
 	}
 
