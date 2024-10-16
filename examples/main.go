@@ -15,9 +15,9 @@ func main() {
 		})
 	}
 
-	dragsort.Sort(ds, 3, 2)
-	dragsort.Sort(ds, 3, 4)
-	dragsort.Sort(ds, 4, 5)
+	dragsort.Sort(ds, ds.users[2], ds.users[1])
+	dragsort.Sort(ds, ds.users[2], ds.users[3])
+	dragsort.Sort(ds, ds.users[2], ds.users[4])
 }
 
 type User struct {

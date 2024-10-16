@@ -2,24 +2,11 @@ package dragsort
 
 import "math"
 
-func Sort(dataSource DataSource, sourceID int64, targetID int64) error {
-	if dataSource == nil || sourceID < 1 || targetID < 1 || sourceID == targetID {
+func Sort(dataSource DataSource, source Sortable, target Sortable) error {
+	if dataSource == nil || source == nil || target == nil {
 		return nil
 	}
-
-	source, err := dataSource.GetSortable(sourceID)
-	if err != nil {
-		return err
-	}
-	if source == nil || source.GetUniqueID() < 1 {
-		return nil
-	}
-
-	target, err := dataSource.GetSortable(targetID)
-	if err != nil {
-		return err
-	}
-	if target == nil || target.GetUniqueID() < 1 {
+	if source.GetUniqueID() < 1 || target.GetUniqueID() < 1 || source.GetUniqueID() == target.GetUniqueID() {
 		return nil
 	}
 
